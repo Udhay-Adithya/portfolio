@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getAllBlogs } from '@/lib/mdx';
 import { format } from 'date-fns';
 
-export default function ThoughtsPage() {
+export default function BlogssPage() {
     const blogs = getAllBlogs();
 
     return (
@@ -13,24 +13,21 @@ export default function ThoughtsPage() {
             </div>
             <ul className="space-y-6">
                 {blogs.map((blog) => {
-                    // Attempt to parse the date, default to original string if invalid
                     let formattedDate = blog.date;
                     try {
                         const dateObject = new Date(blog.date);
-                        // Check if the dateObject is valid before formatting
                         if (!isNaN(dateObject.getTime())) {
                             formattedDate = format(dateObject, 'MMMM d, yyyy');
                         }
                     } catch (error) {
                         console.error("Error formatting date:", error);
-                        // Keep the original date string if formatting fails
                     }
 
                     return (
                         <li key={blog.slug} className="border-b border-border pb-6">
                             <Link href={`/blog/${blog.slug}`} className="flex justify-between items-center w-full group">
-                                <span className="text-lg group-hover:text-primary transition-colors">{blog.title}</span>
-                                <span className="text-sm text-muted-foreground">{formattedDate}</span>
+                                <span className="text-base md:text-lg group-hover:text-primary transition-colors">{blog.title.toLowerCase()}</span>
+                                <span className="text-sm md:text-sm text-muted-foreground">{formattedDate}</span>
                             </Link>
                         </li>
                     );

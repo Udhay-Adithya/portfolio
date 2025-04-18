@@ -3,8 +3,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default function Intro() {
     return (
-        <div className="text-left mb-12 space-y-6 pl-16">
-            <h1 className="text-xs md:text-[42px] font-light">
+        <div className="text-left mb-12 space-y-6 pl-4 md:pl-16">
+            <h1 className="text-4xl md:text-[42px] font-light">
                 hello, i&rsquo;m{" "}
                 <span className="inline-flex items-center space-x-2">
                     <Avatar>

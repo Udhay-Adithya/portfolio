@@ -1,6 +1,6 @@
 import { getBlogBySlug } from '@/lib/mdx';
 import { notFound } from 'next/navigation';
-import { format } from 'date-fns'; // Import date-fns for formatting
+import { format } from 'date-fns';
 
 type Props = {
     params: {
@@ -28,10 +28,10 @@ export default async function BlogPage({ params }: Props) {
 
 
     return (
-        <div className="min-h-screen bg-background text-foreground py-16 px-4">
+        <div className="min-h-screen justify-start bg-background text-foreground py-16 px-4">
             <article className="prose prose-lg dark:prose-invert max-w-3xl mx-auto">
 
-                <h1 className="text-4xl font-bold mb-4">{blog.frontmatter.title}</h1>
+                <h2 className="text-4xl md:text-4xl font-bold mb-4">{blog.frontmatter.title}</h2>
 
                 <p className="text-muted-foreground text-sm mb-8">{formattedDate}</p>
 

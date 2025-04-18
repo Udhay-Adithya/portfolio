@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getAllBlogs } from '@/lib/mdx';
 import { format } from 'date-fns';
 
-export default function BlogssPage() {
+export default function BlogsListPage() {
     const blogs = getAllBlogs();
 
     return (

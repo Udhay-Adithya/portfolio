@@ -9,8 +9,8 @@ type Props = {
 };
 
 export default async function BlogPage({ params }: Props) {
-
-    const blog = await getBlogBySlug(params.slug);
+    const { slug } = await params;
+    const blog = await getBlogBySlug(slug);
 
     if (!blog) {
         notFound();
@@ -28,7 +28,7 @@ export default async function BlogPage({ params }: Props) {
 
 
     return (
-        <div className="min-h-screen justify-start bg-background text-foreground py-16 px-4">
+        <div className="min-h-screen justify-start bg-background py-16 px-4">
             <article className="prose prose-lg dark:prose-invert max-w-3xl mx-auto">
 
                 <h2 className="text-4xl md:text-4xl font-bold mb-4">{blog.frontmatter.title}</h2>

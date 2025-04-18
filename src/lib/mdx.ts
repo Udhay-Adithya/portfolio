@@ -2,8 +2,22 @@ import { compileMDX } from 'next-mdx-remote/rsc';
 import fs from 'fs';
 import path from 'path';
 import { BlogMeta } from '@/types';
-
+import rehypePrettyCode from 'rehype-pretty-code';
+import { transformerCopyButton } from '@rehype-pretty/transformers'
 const BLOG_PATH = path.join(process.cwd(), 'src/content/blog');
+
+const options = {
+    theme: 'one-dark-pro',
+    keepBackground: true,
+    bypassInlineCode: true,
+    defaultLang: "plaintext",
+    transformers: [
+        transformerCopyButton({
+            visibility: 'hover',
+            feedbackDuration: 3_000,
+        }),
+    ],
+};
 
 export async function getBlogBySlug(slug: string) {
     const filePath = path.join(BLOG_PATH, `${slug}.mdx`);
@@ -11,7 +25,15 @@ export async function getBlogBySlug(slug: string) {
 
     const { content, frontmatter } = await compileMDX<BlogMeta>({
         source,
-        options: { parseFrontmatter: true },
+        options: {
+            parseFrontmatter: true,
+            mdxOptions: {
+                rehypePlugins: [
+                    [rehypePrettyCode, options],
+                ],
+            },
+
+        },
     });
 
     return {

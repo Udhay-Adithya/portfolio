@@ -120,3 +120,12 @@
     font-family: var(--font-inter),
   }
 }
+
+.code-container {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background-color: var(--code-bg);
+  overflow: hidden;
+}

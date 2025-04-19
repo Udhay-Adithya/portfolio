@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getAllBlogs } from '@/lib/mdx';
+import { getAllBlogs } from '@/lib/server/mdx';
 import { format } from 'date-fns';
 
 export default function BlogsListPage() {

@@ -3,14 +3,15 @@ import fs from 'fs';
 import path from 'path';
 import { BlogMeta } from '@/types';
 import rehypePrettyCode from 'rehype-pretty-code';
-import { transformerCopyButton } from '@rehype-pretty/transformers'
+import { transformerCopyButton } from '@rehype-pretty/transformers';
+
 const BLOG_PATH = path.join(process.cwd(), 'src/content/blog');
 
 const options = {
     theme: 'one-dark-pro',
     keepBackground: true,
     bypassInlineCode: true,
-    defaultLang: "plaintext",
+    defaultLang: 'plaintext',
     transformers: [
         transformerCopyButton({
             visibility: 'hover',
@@ -28,11 +29,8 @@ export async function getBlogBySlug(slug: string) {
         options: {
             parseFrontmatter: true,
             mdxOptions: {
-                rehypePlugins: [
-                    [rehypePrettyCode, options],
-                ],
+                rehypePlugins: [[rehypePrettyCode, options]],
             },
-
         },
     });
 

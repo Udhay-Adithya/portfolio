@@ -1,4 +1,4 @@
-import { getBlogBySlug } from '@/lib/mdx';
+import { getBlogBySlug } from '@/lib/server/mdx';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 

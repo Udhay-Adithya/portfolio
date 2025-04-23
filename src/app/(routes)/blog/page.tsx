@@ -8,7 +8,7 @@ export default function BlogsListPage() {
     return (
         <div className="min-h-screen max-w-4xl mx-auto bg-background text-foreground px-4 py-16">
             <div className="mb-12">
-                <h1 className="text-4xl font-medium mb-2">blogs</h1>
+                <h1 className="text-4xl font-light mb-2">blogs</h1>
                 <p className="text-muted-foreground">thoughts, stories, and ideas worth sharing</p>
             </div>
             <ul className="space-y-6">

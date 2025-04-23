@@ -18,11 +18,6 @@ export interface WorkMeta {
     description?: string;
     image?: string;
     skills?: string[];
-    projects?: {
-        name: string;
-        description?: string;
-        link?: string;
-    }[];
     slug: string;
 }
 

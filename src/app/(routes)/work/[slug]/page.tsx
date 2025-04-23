@@ -96,22 +96,7 @@ export default async function WorkPage({ params }: Props) {
                     {work.content}
                 </div>
 
-                {/* Projects section - if available */}
-                {work.frontmatter.projects && work.frontmatter.projects.length > 0 && (
-                    <div className="mt-12 pt-6 border-t border-border">
-                        <h3 className="text-lg font-medium mb-4">Key Projects</h3>
-                        <ul className="space-y-4">
-                            {work.frontmatter.projects.map((project: any) => (
-                                <li key={project.name} className="rounded-lg bg-muted/50 p-4">
-                                    <h4 className="font-medium">{project.name}</h4>
-                                    {project.description && (
-                                        <p className="text-muted-foreground text-sm mt-1">{project.description}</p>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
+
             </article>
         </div>
     );

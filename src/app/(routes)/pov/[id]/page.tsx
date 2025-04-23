@@ -4,13 +4,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 type Props = {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 };
 
-export default function PhotoPage({ params }: Props) {
-    const { id } = params;
+
+export default async function PhotoPage({ params }: Props) {
+    const { id } = await params;
     const photo = getPhotoMetadata(id);
 
     if (!photo) {

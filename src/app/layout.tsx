@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Petemoss } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/homepage/navbar";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const petemoss = Petemoss({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-petemoss",
 });
 
 
@@ -41,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${inter.variable}`}>
+    <html lang="en" className={`dark ${inter.variable} ${petemoss.variable}`}>
       <body className={`antialiased ${inter.className}`}>
         <Navbar />
         {children}

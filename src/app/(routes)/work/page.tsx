@@ -1,16 +1,17 @@
-// src/app/(routes)/work/page.tsx
 import Link from 'next/link';
 import { getAllWork } from '@/lib/server/work-mdx';
+import SectionHeader from '@/components/common/section-header';
 
 export default function WorkListPage() {
     const workExperiences = getAllWork();
 
     return (
         <div className="min-h-screen max-w-4xl mx-auto bg-background text-foreground px-4 py-16">
-            <div className="mb-12">
-                <h1 className="text-4xl font-medium mb-2">work</h1>
-                <p className="text-muted-foreground">the path to the the person i want to be</p>
-            </div>
+            <SectionHeader
+                title="work"
+                primaryText="the path"
+                secondaryText="to the person i want to be"
+            />
 
             <div className="space-y-6">
                 {workExperiences.map((work) => {

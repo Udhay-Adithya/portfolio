@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { format } from 'date-fns';
 import { getAllWork } from '@/lib/server/work-mdx';
 import SectionHeader from '@/components/common/section-header';
 
@@ -19,11 +20,20 @@ export default function WorkListPage() {
                     let dateRange = '';
                     try {
                         if (work.startDate) {
-                            const startYear = new Date(work.startDate).getFullYear();
-                            const endDate = work.endDate ? new Date(work.endDate) : null;
-                            const endYear = endDate ? endDate.getFullYear() : 'Present';
+                            const startDate = new Date(work.startDate);
+                            const startFormatted = !isNaN(startDate.getTime())
+                                ? format(startDate, 'MMM yyyy')
+                                : work.startDate;
 
-                            dateRange = `${startYear} — ${endYear}`;
+                            const endDate = work.endDate
+                                ? new Date(work.endDate)
+                                : null;
+
+                            const endFormatted = endDate && !isNaN(endDate.getTime())
+                                ? format(endDate, 'MMM yyyy')
+                                : work.endDate || 'Present';
+
+                            dateRange = `${startFormatted} — ${endFormatted}`;
                         }
                     } catch (error) {
                         console.error("Error formatting date range:", error);

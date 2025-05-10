@@ -66,7 +66,7 @@ export default async function WorkPage({ params }: Props) {
                     <h1 className="text-3xl md:text-4xl font-bold mb-2 tracking-tight">{work.frontmatter.role}</h1>
                     <h2 className="text-xl md:text-2xl text-muted-foreground mb-4">{work.frontmatter.company}</h2>
 
-                    <div className="flex items-center justify-center text-sm text-muted-foreground">
+                    <div className="items-center justify-center text-sm text-muted-foreground">
                         <time>{dateRange}</time>
                         {work.frontmatter.location && (
                             <>
@@ -79,17 +79,19 @@ export default async function WorkPage({ params }: Props) {
 
                 {/* Tech stack/skills section - if available */}
                 {work.frontmatter.skills && work.frontmatter.skills.length > 0 && (
-                    <div className="mb-8">
-                        <h3 className="text-lg font-medium mb-3">Technologies & Skills</h3>
-                        <div className="flex flex-wrap gap-2">
-                            {work.frontmatter.skills.map((skill: string) => (
-                                <span key={skill} className="px-3 py-1 text-xs rounded-full bg-muted text-muted-foreground">
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
+                    <div className="flex flex-wrap gap-2 mb-8">
+                        {work.frontmatter.skills.map((skill: string) => (
+                            <span key={skill} className="px-3 py-1 text-xs rounded-full bg-muted text-muted-foreground">
+                                {skill}
+                            </span>
+                        ))}
                     </div>
                 )}
+
+                {/* Work description */}
+                <div className="blog-content leading-relaxed">
+                    {work.frontmatter.description}
+                </div>
 
                 {/* Work content */}
                 <div className="blog-content leading-relaxed">

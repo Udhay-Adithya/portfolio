@@ -8,13 +8,13 @@ export default function PointOfViewPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground py-16 px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ml-16 items-center">
                 {/* Title section - takes 1 column on mobile, 1 column on desktop */}
-                
+
                 <SectionHeader
                     title="point of view"
-                    primaryText=""
-                    secondaryText="through my digital eyes"
+                    primaryText="my perspective"
+                    secondaryText="in pixels"
                 />
 
                 {/* Photo grid - takes full width on mobile, 2 columns on desktop */}

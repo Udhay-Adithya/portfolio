@@ -1,9 +1,11 @@
 // src/app/(routes)/blog/[slug]/page.tsx
-
 import { getBlogBySlug } from '@/lib/server/mdx';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
+import TableOfContents from '@/components/blog/table-of-contents';
 
 type Props = {
     params: Promise<{
@@ -37,56 +39,86 @@ export default async function BlogPage({ params }: Props) {
     const readingTime = Math.max(1, Math.ceil(wordCount / wordsPerMinute));
 
     return (
-        <div className="min-h-screen bg-background py-12 px-4">
-            <article className="prose prose-lg dark:prose-invert max-w-2xl mx-auto">
-                {/* Featured image - if available */}
-                {blog.frontmatter.image && (
-                    <div className="mb-8 relative rounded-lg overflow-hidden h-64 w-full">
-                        <Image
-                            src={blog.frontmatter.image}
-                            alt={blog.frontmatter.title}
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                    </div>
-                )}
-
-                {/* Article header */}
-                <div className="mb-10 border-b border-border pb-6">
-                    <h1 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">{blog.frontmatter.title}</h1>
-
-                    <div className="flex items-center text-sm text-muted-foreground">
-                        <time>{formattedDate}</time>
-                        <span className="mx-2">·</span>
-                        <span>{readingTime} min read</span>
-                        {/* {blog.frontmatter.category && (
-                            <>
-                                <span className="mx-2">·</span>
-                                <span className="px-2 py-1 rounded-full text-xs bg-muted">{blog.frontmatter.category}</span>
-                            </>
-                        )} */}
-                    </div>
+        <div className="min-h-screen bg-background">
+            {/* Simple navigation */}
+            <nav className="border-b border-border/30">
+                <div className="max-w-7xl mx-auto px-6 py-4">
+                    <Link
+                        href="/blog"
+                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                    >
+                        <ArrowLeft className="w-4 h-4" />
+                        <p className="text-muted-foreground">
+                            Back to
+                            <i>
+                                <span className="font-petemoss-text text-xl font-medium mr-2"> blogs</span>
+                            </i>
+                        </p>
+                    </Link>
                 </div>
+            </nav>
 
-                {/* Article content */}
-                <div className="blog-content leading-relaxed">
-                    {blog.content}
+            {/* Main content with TOC */}
+            <div className="max-w-7xl mx-auto px-6 py-16">
+                <div className="flex flex-col lg:flex-row gap-12">
+                    {/* Table of Contents - Top for mobile, Left for desktop */}
+                    <aside className="lg:w-64 lg:sticky lg:top-8 lg:self-start order-first lg:order-none">
+                        <TableOfContents />
+                    </aside>
+
+                    {/* Main article content */}
+                    <main className="flex-1 max-w-3xl">
+                        <article>
+                            {/* Header */}
+                            <header className="mb-12">
+                                <h1 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight leading-tight">
+                                    {blog.frontmatter.title}
+                                </h1>
+
+                                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-8">
+                                    <time>{formattedDate}</time>
+                                    <span>·</span>
+                                    <span>{readingTime} min read</span>
+                                </div>
+
+                                {/* Featured image */}
+                                {blog.frontmatter.image && (
+                                    <div className="mb-12 relative rounded-lg overflow-hidden aspect-video w-full">
+                                        <Image
+                                            src={blog.frontmatter.image}
+                                            alt={blog.frontmatter.title}
+                                            fill
+                                            className="object-cover"
+                                            priority
+                                        />
+                                    </div>
+                                )}
+                            </header>
+
+                            {/* Content */}
+                            <div className="blog-content" id="blog-content">
+                                {blog.content}
+                            </div>
+
+                            {/* Tags */}
+                            {blog.frontmatter.tags && blog.frontmatter.tags.length > 0 && (
+                                <footer className="mt-16 pt-8 border-t border-border/30">
+                                    <div className="flex flex-wrap gap-2">
+                                        {blog.frontmatter.tags.map((tag: string) => (
+                                            <span
+                                                key={tag}
+                                                className="text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </footer>
+                            )}
+                        </article>
+                    </main>
                 </div>
-
-                {/* Tags section - if available */}
-                {blog.frontmatter.tags && blog.frontmatter.tags.length > 0 && (
-                    <div className="mt-12 pt-6 border-t border-border">
-                        <div className="flex flex-wrap gap-2">
-                            {blog.frontmatter.tags.map((tag: string) => (
-                                <span key={tag} className="px-3 py-1 text-xs rounded-full bg-muted text-muted-foreground">
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </article>
+            </div>
         </div>
     );
 }

@@ -21,3 +21,13 @@ export interface WorkMeta {
     slug: string;
 }
 
+export interface ProjectMeta {
+    title: string;
+    description: string;
+    startDate: string;
+    endDate?: string;
+    technologies: string[];
+    github?: string;
+    slug: string;
+}
+

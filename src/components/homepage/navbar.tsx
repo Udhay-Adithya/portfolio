@@ -25,7 +25,7 @@ export default function Navbar() {
                 <div className="hidden md:flex gap-4 text-sm md:text-base">
                     <Link href="/work" className="hover:text-gray-300 transition-colors">work</Link>
                     <Link href="/blog" className="hover:text-gray-300 transition-colors">blog</Link>
-                    <Link href="/pov" className="hover:text-gray-300 transition-colors">point of view</Link>
+                    <Link href="/projects" className="hover:text-gray-300 transition-colors">projects</Link>
                 </div>
 
                 {/* Mobile Hamburger Button */}
@@ -67,11 +67,11 @@ export default function Navbar() {
                         blog
                     </Link>
                     <Link
-                        href="/pov"
+                        href="/projects"
                         className="py-4 text-lg border-b border-gray-800 hover:text-gray-300 transition-colors"
                         onClick={closeDrawer}
                     >
-                        point of view
+                        projects
                     </Link>
                 </div>
             </div>

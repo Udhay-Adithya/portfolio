@@ -1,0 +1,73 @@
+---
+title: "VIT-AP VTOP API"
+description: "A modular FastAPI service that exposes structured academic data from VTOP via custom scraping library with containerized deployment"
+startDate: "2023-09-01"
+endDate: "2024-01-20"
+technologies: ["Python", "FastAPI", "Pydantic", "Beautiful Soup", "REST API", "Docker", "Google Cloud"]
+github: "https://github.com/Udhay-Adithya/vit_ap_vtop_api"
+---
+
+## Overview
+A robust and scalable FastAPI service designed to extract, structure, and expose academic data from VIT-AP's VTOP system. The service provides a clean REST API interface for accessing academic information with strict data validation and consistent response formatting.
+
+## Key Features
+- **Modular API Design**: Clean, organized endpoints for different academic modules
+- **Custom Scraping Library**: Purpose-built Python package for VTOP data extraction
+- **Strict Data Validation**: Pydantic models ensuring consistent API responses
+- **Containerized Deployment**: Docker-based deployment for scalability and portability
+- **Serverless Architecture**: Google Cloud Run deployment with auto-scaling capabilities
+- **Session Management**: Robust authentication and session handling for VTOP integration
+
+## Technical Implementation
+- **Framework**: FastAPI for high-performance API development with automatic documentation
+- **Data Validation**: Pydantic for strict typing and data validation across all endpoints
+- **Web Scraping**: Beautiful Soup for efficient HTML parsing and data extraction
+- **Architecture**: RESTful API design following industry best practices
+- **Containerization**: Docker for consistent deployment environments
+- **Cloud Platform**: Google Cloud Run for serverless, auto-scaling hosting
+
+## Core Components
+
+### vitap-vtop-client Package
+- **Session Management**: Automated VTOP login and session maintenance
+- **Authentication Handling**: Secure credential management and token refresh
+- **HTML Parsing**: Intelligent parsing of VTOP's complex HTML structure
+- **Data Extraction**: Robust extraction methods for various academic data types
+- **Error Handling**: Comprehensive error handling for network and parsing issues
+
+### API Service Architecture
+- **Modular Endpoints**: Organized endpoints covering 7+ academic modules
+- **Data Standardization**: Consistent response formats across all endpoints
+- **Performance Optimization**: Efficient data processing and response times
+- **Scalability**: Designed to handle multiple concurrent requests
+- **Documentation**: Auto-generated API documentation with FastAPI
+
+## Deployment & Infrastructure
+- **Containerization**: Complete Docker setup for development and production
+- **Cloud Deployment**: Google Cloud Run for serverless hosting
+- **Auto-scaling**: Automatic scaling based on demand with minimal latency
+- **CI/CD Pipeline**: Automated deployment pipeline for consistent releases
+- **Monitoring**: Comprehensive logging and monitoring for service health
+
+## Academic Modules Covered
+- **Attendance Tracking**: Real-time attendance data and analytics
+- **Timetable Management**: Class schedules and room information
+- **Marks & Grades**: Academic performance data and grade calculations
+- **Exam Schedules**: Examination timetables and venue details
+- **Faculty Information**: Faculty profiles and contact details
+- **Course Catalog**: Course descriptions and prerequisites
+- **Academic Calendar**: Important dates and academic events
+
+## Performance & Reliability
+- **Minimal Latency**: Optimized for fast response times
+- **High Availability**: Serverless architecture ensuring consistent uptime
+- **Scalable Design**: Handles varying loads without performance degradation
+- **Data Consistency**: Pydantic validation ensures reliable data structure
+- **Error Resilience**: Robust error handling and recovery mechanisms
+
+## Impact
+- Standardized access to VIT-AP academic data through clean API interface
+- Enabled development of third-party applications using VTOP data
+- Provided reliable and consistent data format for academic information
+- Established reusable components through the vitap-vtop-client package
+- Demonstrated expertise in web scraping, API development, and cloud deployment

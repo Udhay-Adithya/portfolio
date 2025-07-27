@@ -15,7 +15,7 @@ export default function Intro() {
                 </span>{" "}
                 — a devsigner & <br />
                 open sourcerer, here&rsquo;s what i{" "}
-                <Link href="/work"><u>do</u></Link>, what i <Link href="/blog"><u>think</u></Link> and what i <Link href="/pov"><u>see</u></Link>.
+                <Link href="/work"><u>do</u></Link>, what i <Link href="/blog"><u>think</u></Link> and what i <Link href="/pov"><u>build</u></Link>.
             </h1>
 
         </div>

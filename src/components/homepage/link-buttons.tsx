@@ -4,15 +4,15 @@ import Link from "next/link";
 import { MoveUpRight } from "lucide-react";
 
 const links = [
-    { label: "tweets", href: "https://x.com/UdhayFtw" },
     { label: "code", href: "https://github.com/Udhay-Adithya" },
     { label: "network", href: "https://linkedin.com/in/udhay-adithya" },
+    { label: "tweets", href: "https://x.com/UdhayFtw" },
     { label: "resume", href: "https://github.com/Udhay-Adithya/Udhay-Adithya/releases/latest/download/Adithya.Resume.pdf" },
 ];
 
 export default function LinkButtons() {
     return (
-        <div className="flex gap-4 mt-18 md:mt-18 pl-16 md:pl-16 flex-wrap">
+        <div className="flex gap-4 mt-12 md:mt-18 pl-4 md:pl-16 flex-wrap">
             {links.map((link) => (
                 <Link
                     key={link.href}

@@ -44,7 +44,7 @@ export default function ProjectsListPage() {
                         <div key={project.slug} className="border-b border-border pb-6">
                             <Link href={`/projects/${project.slug}`} className="flex justify-between items-center w-full group">
                                 <span className="text-base md:text-lg group-hover:text-primary transition-colors">
-                                    {project.title.toLowerCase()}
+                                    {project.title?.toLowerCase()}
                                 </span>
                                 <span className="text-sm md:text-sm text-muted-foreground">{dateRange}</span>
                             </Link>

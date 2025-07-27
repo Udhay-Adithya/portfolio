@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import { getProjectBySlug } from '@/lib/server/projects-mdx';
-import { ExternalLink, Github } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 type Props = {
     params: Promise<{

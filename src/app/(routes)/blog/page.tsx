@@ -15,26 +15,28 @@ export default function BlogsListPage() {
             />
 
             <ul className="space-y-6">
-                {blogs.map((blog) => {
-                    let formattedDate = blog.date;
-                    try {
-                        const dateObject = new Date(blog.date);
-                        if (!isNaN(dateObject.getTime())) {
-                            formattedDate = format(dateObject, 'MMMM d, yyyy');
+                {blogs
+                    .filter((blog) => blog.title) // Only include blogs that have a title
+                    .map((blog) => {
+                        let formattedDate = blog.date;
+                        try {
+                            const dateObject = new Date(blog.date);
+                            if (!isNaN(dateObject.getTime())) {
+                                formattedDate = format(dateObject, 'MMMM d, yyyy');
+                            }
+                        } catch (error) {
+                            console.error("Error formatting date:", error);
                         }
-                    } catch (error) {
-                        console.error("Error formatting date:", error);
-                    }
 
-                    return (
-                        <li key={blog.slug} className="border-b border-border pb-6">
-                            <Link href={`/blog/${blog.slug}`} className="flex justify-between items-center w-full group">
-                                <span className="text-base md:text-lg group-hover:text-primary transition-colors">{blog.title.toLowerCase()}</span>
-                                <span className="text-sm md:text-sm text-muted-foreground">{formattedDate}</span>
-                            </Link>
-                        </li>
-                    );
-                })}
+                        return (
+                            <li key={blog.slug} className="border-b border-border pb-6">
+                                <Link href={`/blog/${blog.slug}`} className="flex justify-between items-center w-full group">
+                                    <span className="text-base md:text-lg group-hover:text-primary transition-colors">{blog.title.toLowerCase()}</span>
+                                    <span className="text-sm md:text-sm text-muted-foreground">{formattedDate}</span>
+                                </Link>
+                            </li>
+                        );
+                    })}
             </ul>
         </div>
     );

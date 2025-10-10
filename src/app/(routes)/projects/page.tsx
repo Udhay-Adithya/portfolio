@@ -42,7 +42,7 @@ export default function ProjectsListPage() {
 
                     return (
                         <div key={project.slug} className="border-b border-border pb-6">
-                            <Link href={`/projects/${project.slug}`} className="flex justify-between items-center w-full group">
+                            <Link prefetch href={`/projects/${project.slug}`} className="flex justify-between items-center w-full group">
                                 <span className="text-base md:text-lg group-hover:text-primary transition-colors">
                                     {project.title?.toLowerCase()}
                                 </span>

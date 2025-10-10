@@ -30,7 +30,7 @@ export default function BlogsListPage() {
 
                         return (
                             <li key={blog.slug} className="border-b border-border pb-6">
-                                <Link href={`/blog/${blog.slug}`} className="flex justify-between items-center w-full group">
+                                <Link prefetch href={`/blog/${blog.slug}`} className="flex justify-between items-center w-full group">
                                     <span className="text-base md:text-lg group-hover:text-primary transition-colors">{blog.title.toLowerCase()}</span>
                                     <span className="text-sm md:text-sm text-muted-foreground">{formattedDate}</span>
                                 </Link>

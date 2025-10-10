@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import { getWorkBySlug } from '@/lib/server/work-mdx';
+import { getAllWork, getWorkBySlug } from '@/lib/server/work-mdx';
 
 type Props = {
     params: Promise<{
@@ -10,8 +10,7 @@ type Props = {
 };
 
 export default async function WorkPage({ params }: Props) {
-    const resolvedParams = await params;
-    const { slug } = resolvedParams;
+    const { slug } = await params;
     const work = await getWorkBySlug(slug);
 
     if (!work) {
@@ -103,3 +102,10 @@ export default async function WorkPage({ params }: Props) {
         </div>
     );
 }
+
+// SSG for work pages
+export function generateStaticParams() {
+    return getAllWork().map(({ slug }) => ({ slug }));
+}
+
+export const dynamicParams = false;

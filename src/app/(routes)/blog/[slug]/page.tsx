@@ -1,5 +1,5 @@
 // src/app/(routes)/blog/[slug]/page.tsx
-import { getBlogBySlug } from '@/lib/server/mdx';
+import { getAllBlogs, getBlogBySlug } from '@/lib/server/mdx';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import Image from 'next/image';
@@ -14,8 +14,7 @@ type Props = {
 };
 
 export default async function BlogPage({ params }: Props) {
-    const resolvedParams = await params;
-    const { slug } = resolvedParams;
+    const { slug } = await params;
     const blog = await getBlogBySlug(slug);
 
     if (!blog) {
@@ -34,8 +33,8 @@ export default async function BlogPage({ params }: Props) {
 
     // Calculate reading time (rough estimate)
     const wordsPerMinute = 200;
-    const contentText = blog.content.toString().replace(/<[^>]*>/g, '');
-    const wordCount = contentText.split(/\s+/).length;
+    const contentText = (blog.rawContent || '').replace(/<[^>]*>/g, '');
+    const wordCount = contentText ? contentText.split(/\s+/).length : 0;
     const readingTime = Math.max(1, Math.ceil(wordCount / wordsPerMinute));
 
     return (
@@ -122,3 +121,11 @@ export default async function BlogPage({ params }: Props) {
         </div>
     );
 }
+
+// Pre-generate all blog pages at build time for instant navigations
+export function generateStaticParams() {
+    return getAllBlogs().map(({ slug }) => ({ slug }));
+}
+
+// Treat unknown slugs as 404 and avoid per-request rendering
+export const dynamicParams = false;

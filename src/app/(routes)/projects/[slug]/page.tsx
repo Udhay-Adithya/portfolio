@@ -1,18 +1,13 @@
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import Link from 'next/link';
-import { getProjectBySlug } from '@/lib/server/projects-mdx';
+import { getAllProjects, getProjectBySlug } from '@/lib/server/projects-mdx';
 import { Github } from 'lucide-react';
 
-type Props = {
-    params: Promise<{
-        slug: string;
-    }>;
-};
+type Props = { params: Promise<{ slug: string }> };
 
 export default async function ProjectPage({ params }: Props) {
-    const resolvedParams = await params;
-    const { slug } = resolvedParams;
+    const { slug } = await params;
     const project = await getProjectBySlug(slug);
 
     if (!project) {
@@ -91,3 +86,9 @@ export default async function ProjectPage({ params }: Props) {
         </div>
     );
 }
+
+export function generateStaticParams() {
+    return getAllProjects().map(({ slug }) => ({ slug }));
+}
+
+export const dynamicParams = false;

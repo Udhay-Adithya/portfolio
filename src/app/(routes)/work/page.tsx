@@ -42,7 +42,7 @@ export default function WorkListPage() {
 
                     return (
                         <div key={work.slug} className="border-b border-border pb-6">
-                            <Link href={`/work/${work.slug}`} className="flex justify-between items-center w-full group">
+                            <Link prefetch href={`/work/${work.slug}`} className="flex justify-between items-center w-full group">
                                 <span className="text-base md:text-lg group-hover:text-primary transition-colors">
                                     {work.company.toLowerCase()}
                                 </span>

@@ -22,10 +22,28 @@ const options = {
 };
 
 export async function getBlogBySlug(slug: string): Promise<{ content: React.ReactNode; frontmatter: BlogMeta; slug: string; rawContent: string } | null> {
-    const filePath = path.join(BLOG_PATH, `${slug}.mdx`);
-    if (!fs.existsSync(filePath)) {
+    // First, try to find by ID in frontmatter
+    const files = fs.readdirSync(BLOG_PATH);
+    let targetFile: string | null = null;
+
+    for (const file of files) {
+        if (!file.endsWith('.mdx')) continue;
+
+        const raw = fs.readFileSync(path.join(BLOG_PATH, file), 'utf8');
+        const { data } = matter(raw);
+
+        // Check if the slug matches either the ID or the filename
+        if (data.id === slug || file.replace(/\.mdx$/, '') === slug) {
+            targetFile = file;
+            break;
+        }
+    }
+
+    if (!targetFile) {
         return null;
     }
+
+    const filePath = path.join(BLOG_PATH, targetFile);
     const source = fs.readFileSync(filePath, 'utf8');
     const { content: rawContentWithoutFrontmatter } = matter(source);
 
@@ -58,7 +76,8 @@ export function getAllBlogs(): BlogMeta[] {
 
             return {
                 ...(data as BlogMeta),
-                slug: file.replace(/\.mdx$/, ''),
+                // Use ID if available, otherwise fallback to filename
+                slug: data.id || file.replace(/\.mdx$/, ''),
             };
         })
         .sort((a, b) => {

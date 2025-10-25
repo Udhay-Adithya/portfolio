@@ -1,25 +1,32 @@
 ---
-title: "How I Learnt Flutter"
+id: "FL3RN2"
+title: "My Journey of Learning Flutter"
 date: "2025-05-25"
 description: "A fun story of how I learnt Flutter by building a real project and how you can learn it too (without burning out)."
 category: "Development"
-tags: ["Flutter", "Dart", "Mobile Development", "Clean Architecture"]
+tags: ["Flutter", "Dart", "Mobile Development", "Personal"]
 ---
 
-I started learning **Flutter** at the very beginning of 2024, and it all began because of a real need — I wanted to build an app for my university, the **VITAP Student App**. I didn’t know a thing about Flutter at that point, but the idea of building something functional and useful for students around me was too exciting to ignore. So I jumped in, headfirst.
+My journey with **Flutter** started at the beginning of 2024. It wasn't because I wanted to learn a new technology for the sake of it, but because I had a real problem to solve. I wanted to build a mobile app for my university, VIT-AP, to make life easier for students. The idea of creating something that my friends and I could use every day was incredibly exciting, but there was one small problem: I had absolutely no idea how to build mobile apps.
 
-Now, I didn’t start the "textbook way". Nope. I went the chaotic route — straight-up **ChatGPT-driven development**. I would ask it how to do stuff, then sit and debug errors for hours. Honestly, 80% of the time it wouldn’t work on the first try, but I learned a lot by just messing around. I barely watched any tutorials or read documentation at this point (yeah, I was lazy). But soon, things started to fall apart — the codebase became a mess, and I had no clue how to scale or structure it properly.
+So, I did what any excited and slightly impatient person would do — I jumped right in. I didn't follow any tutorials or read any documentation. Instead, I opened up ChatGPT and started asking it to write code for me. My "development" process was simple: ask the AI, copy the code, and paste it into my project.
 
-That’s when I stumbled upon [@RivaanRanawat]((https://www.youtube.com/@RivaanRanawat)) on YouTube. And wow — that guy literally saved my project and my sanity. His channel is a goldmine. Clean architecture? Check. MVVM pattern? Check. BLoC? Riverpod? Testing? Everything is there, all well-explained and for free. I owe a big chunk of my learning to him, and if you're just starting out with Flutter — **this is the one channel I’d recommend**.
+For a little while, it felt like magic. I was building screens and adding buttons without knowing what I was doing. But the magic quickly wore off. Most of the time, the code didn't work. I would spend hours trying to fix errors that I didn't understand. My project, the **VITAP Student App**, became a tangled mess of files and code that was impossible to manage. Adding a new feature felt like performing surgery in the dark. I knew I had to change my approach.
 
-At one point, I realized that randomly hacking things together wasn't going to cut it if I wanted to build real apps. So I sat down and followed a structured path (finally). I started with **Dart**, since you kinda need that before writing Flutter apps. If you already know an OOP language like Java, Dart will feel familiar — just a few extra things to learn like `final vs const`, mixins, enums, nullable types, and exception handling.
+That's when I discovered **Rivaan Ranawat's YouTube channel**, and it was a complete game-changer. His videos were exactly what I needed. He explained complex topics like "Clean Architecture" and "MVVM" in a way that finally made sense to me. He had tutorials on everything from state management with BLoC and Riverpod to testing. His channel became my go-to resource, and I honestly believe it saved my project. If you're starting with Flutter, I can't recommend his channel enough.
 
-Once I got the hang of Dart, I dived into Flutter basics — layout, widgets, navigation, and theming. I followed a clean, beginner-friendly Flutter playlist and slowly began to understand how Flutter's reactive UI system worked. After that, I explored **Futures** and `async/await`, because asynchronous code is everywhere in Flutter.
+Inspired, I decided to start over, but this time, I would do it the right way. I created a structured learning path for myself.
 
-Then came the holy war: **State Management**. People usually take one of two paths — **BLoC** or **Riverpod**. I tried both. BLoC felt more structured and formal, especially for larger apps — it forces you to separate UI from business logic neatly. Riverpod, on the other hand, felt more modern, flexible, and easier to start with. If you're someone who doesn’t want to write 5 files for a button click, you might like Riverpod. But if you're into predictable, testable patterns, give BLoC a try. I’d say — explore both and see what feels right for your project.
+First, I focused on learning **Dart**, the programming language that Flutter is built on. Since I already knew object-oriented programming from Java, Dart felt quite familiar. I just had to get used to a few new concepts like null safety, mixins, and how it handles asynchronous programming.
 
-After learning state management, I got into **architectural patterns** like **MVVM** and **Clean Architecture**, and trust me, that’s when my apps started to feel truly “production ready”. It’s like suddenly your code starts making sense and isn’t just a pile of spaghetti. Finally, I dove into **testing in Flutter** — unit testing, widget testing, integration testing — and it was really helpful to gain confidence in my code before releasing updates.
+Once I had a decent grasp of Dart, I moved on to **Flutter basics**. I learned about "widgets," which are like the building blocks of a Flutter app. You combine them to create your UI, from a simple button to a complex screen layout. I spent time understanding how to arrange these widgets to build beautiful and responsive layouts.
 
-Looking back, my journey with Flutter wasn’t the cleanest — but it was fun and filled with late-night debugging and random “aha!” moments. If you're someone who learns by doing (and breaking things), Flutter is a great playground. You can build real stuff early on, and grow your skills along the way.
+Next, I tackled the big one: **state management**. In simple terms, "state" is just any data in your app that can change over time. State management is how you handle those changes. In the Flutter world, the two most popular choices are **BLoC** and **Riverpod**. I decided to try both. BLoC felt very structured and a bit formal, making you separate your business logic from your UI very strictly. This is great for large, complex apps where you need things to be predictable. Riverpod, on the other hand, felt more modern and flexible, with less boilerplate code. My advice is to try both and see which one clicks for you.
 
-So yeah — if you're planning to learn Flutter, don’t stress too much. Start with the basics, build a simple app, and keep improving. Lean on creators like **Rivaan**, and most importantly — enjoy the process. Debugging might suck sometimes, but seeing your app live and working? Totally worth it.
+After getting comfortable with state management, I dove into **architectural patterns** like **MVVM (Model-View-ViewModel)** and **Clean Architecture**. This is when my app started to feel like a real, professional project. These patterns are like blueprints for your code, helping you keep everything organized, testable, and easy to maintain.
+
+Finally, I learned about **testing in Flutter**. I learned how to write unit tests for my logic, widget tests for my UI components, and integration tests to ensure the entire app worked as expected. This gave me the confidence to add new features without worrying about breaking something else.
+
+Looking back, my path to learning Flutter was a bit chaotic, but it was also a lot of fun. I learned that it's okay to make a mess as long as you're willing to clean it up and learn from your mistakes. Building a real project from day one was a powerful motivator, and it made the late-night debugging sessions feel worthwhile.
+
+So, if you're thinking about learning Flutter, my advice is to just start. Build something you're passionate about, don't be afraid to break things, and lean on the amazing community and creators out there. It's a rewarding journey, and seeing your app come to life is one of the best feelings in the world.

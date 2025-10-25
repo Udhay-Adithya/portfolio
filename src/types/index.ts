@@ -1,6 +1,7 @@
 export type BlogMeta = {
     title: string;
     date: string;
+    id?: string; // 6-character alphanumeric identifier
     slug?: string;
     description?: string;
     image?: string;
